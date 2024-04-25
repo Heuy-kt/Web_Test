@@ -10,7 +10,7 @@ spring:
     password: psql
   jpa:
     hibernate:
-      ddl-auto: drop
+      ddl-auto: update
       dialect: org.hibernate.dialect.PostgreSQLDialect
     show: true
 

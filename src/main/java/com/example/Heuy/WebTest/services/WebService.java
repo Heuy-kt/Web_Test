@@ -3,30 +3,39 @@ package com.example.Heuy.WebTest.services;
 import com.example.Heuy.WebTest.entites.Student;
 import com.example.Heuy.WebTest.enums.Level;
 import com.example.Heuy.WebTest.repo.WebTestRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class WebService {
-    @Autowired
-    WebTestRepository webTestRepository;
+
+    private final WebTestRepository webTestRepository;
 
     //create a student
-    public String createStudent(Student student){
+    public ResponseEntity<String> createStudent(Student student){
         webTestRepository.save(student);
-        return student.getName() + " is created";
+        return new ResponseEntity<>(student.getName() + " is created", HttpStatus.CREATED);
     }
 
-    public Optional<Student> getStudent(int number){
-        return webTestRepository.findById(number);
+    public ResponseEntity<Optional<Student>> getStudent(int number){
+        return new ResponseEntity<>(webTestRepository.findById(number), HttpStatus.OK);
     }
 
-    public String changeLevel(int id){
-        Optional<Student> student = getStudent(id);
-        student.get().setLevel(Level.FINAL);
-        return "level successfully changed";
+    public ResponseEntity<List<Student>> getAllStudents(){
+        return new ResponseEntity<>(webTestRepository.findAll(), HttpStatus.OK);
+
+    }
+
+    public ResponseEntity<Level> changeLevel(long id, Level newLevel){
+        webTestRepository.updateLevel(id, newLevel);
+        return new ResponseEntity<>(newLevel, HttpStatus.OK);
     }
 
 }

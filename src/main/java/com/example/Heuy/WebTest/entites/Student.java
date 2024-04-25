@@ -11,8 +11,9 @@ import lombok.*;
 @NoArgsConstructor
 public class Student {
     @Id
-    private Integer id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
     private String name;
     private Integer age;
     private String matNo;

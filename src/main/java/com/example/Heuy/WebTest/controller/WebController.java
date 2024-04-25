@@ -1,18 +1,22 @@
 package com.example.Heuy.WebTest.controller;
 
 import com.example.Heuy.WebTest.entites.Student;
+import com.example.Heuy.WebTest.enums.Level;
 import com.example.Heuy.WebTest.services.WebService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("store/v1")
+@RequiredArgsConstructor
 public class WebController {
 
-    @Autowired
-    WebService webService;
+
+    private final WebService webService;
 
     @PostMapping("createStudent")
     public String createStudent(@RequestBody Student student){
@@ -20,14 +24,19 @@ public class WebController {
         return student.getName();
     }
 
-    @GetMapping("getstudentbyname/{id}")
-    public Optional<Student> getStudent(@PathVariable int id){
+    @GetMapping("getstudentbyid/{id}")
+    public ResponseEntity<Optional<Student>> getStudent(@PathVariable int id){
         return webService.getStudent(id);
     }
 
-    @PostMapping("changelevel/{id}")
-    public String changeLevel(@PathVariable int id){
-        return webService.changeLevel(id);
+    @GetMapping("getAllStudents")
+    public ResponseEntity<List<Student>> getAllStudents(){
+        return webService.getAllStudents();
+    }
+
+    @PutMapping("changelevel")
+    public ResponseEntity<Level> changeLevel(@RequestParam("id") int id, @RequestParam("level") Level level){
+        return webService.changeLevel(id, level);
     }
 
 }
