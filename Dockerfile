@@ -1,9 +1,12 @@
-FROM maven:3.8.5-openjdk-17 AS build
+FROM maven:3.8.5-openjdk-21 AS build
+
 COPY . .
-RUN mvn clean package -DskipTests
+
+RUN mvn clean package
 
 
 FROM openjdk:21-jdk-slim
-COPY --from=build /target/WebTest-0.0.1-SNAPSHOT.jar WebTest.jar
+COPY --from=build /target/WebTest-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8089
-ENTRYPOINT ["java", "-jar", "WebTest.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
