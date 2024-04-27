@@ -5,9 +5,9 @@ spring:
   application:
     name: webtest
   datasource:
-    url: jdbc:postgresql://localhost:5432/webtest
-    username: postgres
-    password: psql
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/webtest_qja6
+    username: ridwan
+    password: YxoIXTwv59fnSvk5LXgpCAGUtbIZdTKL
   jpa:
     hibernate:
       ddl-auto: update
