@@ -1,7 +1,5 @@
-   server:
-    tomcat:
-      accesslog:
-        enabled: true
+server:
+  port: 8089
 
 spring:
   application:
@@ -14,7 +12,7 @@ spring:
     hibernate:
       ddl-auto: update
       dialect: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
+    show: true
 
 #  spring.datasource.url=jdbc:postgresql://localhost:5432/webtest
 #  spring.datasource.username=ridwan
