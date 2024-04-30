@@ -1,5 +1,6 @@
 package com.example.Heuy.WebTest.services;
 
+import com.example.Heuy.WebTest.DTOs.StudentDTO;
 import com.example.Heuy.WebTest.entites.Student;
 import com.example.Heuy.WebTest.enums.Level;
 import com.example.Heuy.WebTest.repo.WebTestRepository;
@@ -24,8 +25,14 @@ public class WebService {
         return new ResponseEntity<>(student.getName() + " is created", HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Optional<Student>> getStudent(int number){
+    public ResponseEntity<Optional<Student>> getStudent(long number){
         return new ResponseEntity<>(webTestRepository.findById(number), HttpStatus.OK);
+    }
+
+    public ResponseEntity<Optional<StudentDTO>> findFriendStudent(long id){
+        Optional<Student> student = webTestRepository.findById(id);
+        StudentDTO studentDTO = new StudentDTO(student.get().getName(), student.get().getMatNo(), student.get().getLevel());
+        return new ResponseEntity<>(Optional.of(studentDTO), HttpStatus.OK);
     }
 
     public ResponseEntity<List<Student>> getAllStudents(){

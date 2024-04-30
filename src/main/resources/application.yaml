@@ -1,18 +1,23 @@
-server:
-  port: 8089
-
+  server:
+    tomcat:
+      accesslog:
+        enabled: true
+#server:
+#  port: 8089
 spring:
   application:
     name: webtest
   datasource:
-    url: jdbc:postgresql://localhost:5432/webtest
-    username: postgres
-    password: psql
+    url: jdbc:postgresql://dpg-cominvi1hbls73f4fq0g-a.oregon-postgres.render.com/database_qaw4
+    username: database_qaw4_user
+    password: l12g7EmquU9AqF0kyJBvGd2XsG3P4dD5
+    driver-class-name: org.postgresql.Driver
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-    show: true
+    show-sql: true
+
 
 #  spring.datasource.url=jdbc:postgresql://localhost:5432/webtest
 #  spring.datasource.username=ridwan

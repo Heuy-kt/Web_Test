@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface WebTestRepository extends JpaRepository<Student, Integer> {
+public interface WebTestRepository extends JpaRepository<Student, Long> {
 
     @Modifying
     @Transactional

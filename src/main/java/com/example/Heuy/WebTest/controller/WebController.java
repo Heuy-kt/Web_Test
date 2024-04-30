@@ -1,9 +1,11 @@
 package com.example.Heuy.WebTest.controller;
 
+import com.example.Heuy.WebTest.DTOs.StudentDTO;
 import com.example.Heuy.WebTest.entites.Student;
 import com.example.Heuy.WebTest.enums.Level;
 import com.example.Heuy.WebTest.services.WebService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +26,13 @@ public class WebController {
         return student.getName();
     }
 
+    @GetMapping("findfriend/{id}")
+    public ResponseEntity<Optional<StudentDTO>> findFriend(@PathVariable long id){
+        return webService.findFriendStudent(id);
+    }
+
     @GetMapping("getstudentbyid/{id}")
-    public ResponseEntity<Optional<Student>> getStudent(@PathVariable int id){
+    public ResponseEntity<Optional<Student>> getStudent(@PathVariable long id){
         return webService.getStudent(id);
     }
 
@@ -35,7 +42,7 @@ public class WebController {
     }
 
     @PutMapping("changelevel")
-    public ResponseEntity<Level> changeLevel(@RequestParam("id") int id, @RequestParam("level") Level level){
+    public ResponseEntity<Level> changeLevel(@RequestParam("id") long id, @RequestParam("level") Level level){
         return webService.changeLevel(id, level);
     }
 
