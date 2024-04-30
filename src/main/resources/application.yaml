@@ -8,7 +8,7 @@ spring:
   application:
     name: webtest
   datasource:
-    url: jdbc:postgresql://dpg-cominvi1hbls73f4fq0g-a.oregon-postgres.render.com/database_qaw4
+    url: jdbc:postgresql://dpg-cominvi1hbls73f4fq0g-a/database_qaw4
     username: database_qaw4_user
     password: l12g7EmquU9AqF0kyJBvGd2XsG3P4dD5
     driver-class-name: org.postgresql.Driver
