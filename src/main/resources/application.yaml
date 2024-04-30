@@ -1,9 +1,9 @@
-  server:
-    tomcat:
-      accesslog:
-        enabled: true
-#server:
-#  port: 8089
+#  server:
+#    tomcat:
+#      accesslog:
+#        enabled: true
+server:
+  port: 8089
 spring:
   application:
     name: webtest
