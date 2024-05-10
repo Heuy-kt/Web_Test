@@ -1,16 +1,13 @@
-#  server:
-#    tomcat:
-#      accesslog:
-#        enabled: true
+
 server:
   port: 8089
 spring:
   application:
     name: webtest
   datasource:
-    url: jdbc:postgresql://dpg-cominvi1hbls73f4fq0g-a/database_qaw4
-    username: database_qaw4_user
-    password: l12g7EmquU9AqF0kyJBvGd2XsG3P4dD5
+    url: jdbc:postgresql://dpg-cov3r0acn0vc739sup2g-a.oregon-postgres.render.com/web_test
+    username: web_test_user
+    password: w5Qa09aqULbilzkYY8nsI1CsTQCjqgx7
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect

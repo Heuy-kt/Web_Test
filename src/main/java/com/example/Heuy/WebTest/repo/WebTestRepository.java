@@ -13,6 +13,6 @@ public interface WebTestRepository extends JpaRepository<Student, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE Student s SET s.level = :level WHERE s.id = :id")
+    @Query("UPDATE Student s SET s.level = :level WHERE s.id = :id ")
     void updateLevel(Long id, Level level);
 }
